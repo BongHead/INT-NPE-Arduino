@@ -1,3 +1,8 @@
+#include <Servo.h>
+#include <IRremote.h>
+#include <HC-SR04.h>
+
+
 //Changez les noms au besoin:
 int pin1 = 1;
 int pin2 = 2;
