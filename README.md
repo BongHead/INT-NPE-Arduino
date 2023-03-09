@@ -31,7 +31,8 @@ Ouvrez le fichier Main.ino:
 ![5:](https://github.com/BongHead/INT-NPE-Arduino/blob/main/Images%20readme/4.PNG?raw=true)
 
 
-**Veuillez vous référer aux liens suivants pour les libraries:**
+
+### **Veuillez vous référer aux liens suivants pour les libraries:**
 
 [Syntaxe](https://www.arduino.cc/reference/en/)
 
