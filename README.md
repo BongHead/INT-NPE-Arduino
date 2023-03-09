@@ -7,6 +7,12 @@
 
 Allez tout lire. Please. Avant de me DM sur comment utiliser github.
 
+Pour ce projet, clonez tout d'abord ce repository:
+
+![Étape 1:](Images readme/0.png)
+
+
+
 
 **Veuillez vous référer aux liens suivants pour les libraries:**
 
