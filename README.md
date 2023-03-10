@@ -30,7 +30,7 @@ Ouvrez le fichier Main.ino:
 
 ![5:](https://github.com/BongHead/INT-NPE-Arduino/blob/main/Images%20readme/4.PNG?raw=true)
 
-Ou si vous êtes mieux avec Git:
+Ou si vous êtes familier avec Git:
 
 ``` git clone https://github.com/BongHead/INT-NPE-Arduino.git ```
 
@@ -47,3 +47,33 @@ dans le folder désiré.
 [Servo-moteur](https://docs.arduino.cc/learn/electronics/servo-motors)
 
 [IRremote](https://github.com/Arduino-IRremote/Arduino-IRremote)
+
+
+
+### **Prenez note de ces choses suivantes lors du codage:**
+Il est fortement suggéré de mettre un delay entre chaque signal électrique différent:
+```
+void loop(){
+  ToggleLight();
+  delay(10); //Donner du temps pour éviter d'avoir 2 (ou plus) signals en même temps qui peuvent bugger le truc.
+  RotateEngine(25);
+  delay(10);
+  ToggleLight();
+}
+```
+
+Je vais probablement faire des libraries pour rendre plus facile le codage. Il suffit de mettre `#include <my_library>` au début du fichier.
+
+Si vous voulez faire des libraries vous-mêmes, suivez la structure suivante:
+```
+INT-NPE-Arduino
+     |_____Images Readme
+     |
+     |_____Main
+     |
+     |_____My_Library
+     |          |____My_library.h
+     |          |____My_library.cpp
+     |
+     |_____README.md
+```
