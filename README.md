@@ -30,6 +30,12 @@ Ouvrez le fichier Main.ino:
 
 ![5:](https://github.com/BongHead/INT-NPE-Arduino/blob/main/Images%20readme/4.PNG?raw=true)
 
+Ou si vous êtes mieux avec Git:
+
+``` git clone https://github.com/BongHead/INT-NPE-Arduino.git ```
+
+dans le folder désiré.
+
 
 
 ### **Veuillez vous référer aux liens suivants pour les libraries:**
