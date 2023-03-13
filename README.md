@@ -1,6 +1,13 @@
 # INT-NPE-Arduino
 ## Projet d'intégration session Hiver 2023
 
+
+### **La version la plus récente est la branche testing.**
+
+<br/>
+<br/>
+<br/>
+
 ~~Allez donc apprendre comment utiliser GitHub, bande d'analphabètes.~~
 
 [Tutoriel](https://docs.github.com/en/get-started)
@@ -38,6 +45,9 @@ dans le folder désiré.
 
 
 
+<br/>
+<br/>
+
 ### **Veuillez vous référer aux liens suivants pour les libraries:**
 
 [Syntaxe](https://www.arduino.cc/reference/en/)
@@ -49,6 +59,8 @@ dans le folder désiré.
 [IRremote](https://github.com/Arduino-IRremote/Arduino-IRremote)
 
 
+<br/>
+<br/>
 
 ### **Prenez note de ces choses suivantes lors du codage:**
 Il est fortement suggéré de mettre un delay entre chaque signal électrique différent:
@@ -61,7 +73,7 @@ void loop(){
   ToggleLight();
 }
 ```
-
+<br/>
 Je vais probablement faire des libraries pour rendre plus facile le codage. Il suffit de mettre `#include <my_library>` au début du fichier.
 
 Si vous voulez faire des libraries vous-mêmes, suivez la structure suivante:
