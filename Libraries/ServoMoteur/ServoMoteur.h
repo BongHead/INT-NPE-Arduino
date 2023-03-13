@@ -16,7 +16,7 @@ class ServoMoteur{
         int pin4;
 
     public:
-        ServoMoteur(Servo servo1, Servo servo2, Servo servo3, Servo servo4, int pin1, int pin2, int pin3, int pin4)
+        ServoMoteur(Servo servo1, Servo servo2, Servo servo3, Servo servo4, int pin1, int pin2, int pin3, int pin4);
         void init();
         void Forward();
         void Backward();
