@@ -18,7 +18,6 @@ int pin4=4;
 ServoMoteur moteur(servo1, servo2, servo3, servo4, pin1, pin2, pin3, pin4);
 
 void setup(){
-  
   Serial.begin(9600);
 }
 
