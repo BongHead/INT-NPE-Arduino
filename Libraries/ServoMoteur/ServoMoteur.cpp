@@ -42,37 +42,37 @@ void ServoMoteur::init(){
 */
 void ServoMoteur::Forward(){
     //Rotate all 4 wheels forward *while* IR remote -> up arrow
-    servo1.write();
-    servo2.write();
-    servo3.write();
-    servo4.write();
+    servo1.write(45);
+    servo2.write(45);
+    servo3.write(45);
+    servo4.write(45);
     delay(15); //allow the servo some time to spin
 }
 
 void ServoMoteur::Backward(){
     //Rotate all 4 wheels backward *while* IR remote -> down arrow
-    servo1.write();
-    servo2.write();
-    servo3.write();
-    servo4.write();
+    servo1.write(45);
+    servo2.write(45);
+    servo3.write(45);
+    servo4.write(45);
     delay(15);
 }
 
 void ServoMoteur::Left(){
     //Rotate 1 and 4 backward, 2 and 3 forward *while* IR remote -> left arrow
-    servo1.write();
-    servo2.write();
-    servo3.write();
-    servo4.write();
+    servo1.write(45);
+    servo2.write(45);
+    servo3.write(45);
+    servo4.write(45);
     delay(15);
 }
 
 void ServoMoteur::Right(){
     //Rotate 1 and 4 forward, 2 and 3 forward *while* IR remote -> right arrow
-    servo1.write();
-    servo2.write();
-    servo3.write();
-    servo4.write();
+    servo1.write(45);
+    servo2.write(45);
+    servo3.write(45);
+    servo4.write(45);
     delay(15);
 }
 //"while" might be implemented in the void loop() instead

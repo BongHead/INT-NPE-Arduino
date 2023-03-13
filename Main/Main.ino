@@ -1,28 +1,26 @@
-#include <Servo.h>
 #include <IRremote.h>
-#include <HC-SR04.h>
+#include <IRremoteInt.h>
+
+#include <Servo.h>
+
+#include <ServoMoteur.h>
 
 
 //Changez les noms au besoin:
-int pin1 = 1;
-int pin2 = 2;
-int pin3 = 3;
-int pin4 = 4;
-int pin5 = 5;
-int pin6 = 6;
-int pin7 = 7;
-int pin8 = 8;
-int pin9 = 9;
-int pin10 = 10;
-int pin11 = 11;
-int pin12 = 12;
-int pin14 = 13;
+Servo servo1;
+Servo servo2;
+Servo servo3;
+Servo servo4;
+int pin1;
+int pin2;
+int pin3;
+int pin4;
 
 void setup(){
-    
-    Serial.begin(9600);
+  ServoMoteur(servo1, servo2, servo3, servo4, pin1, pin2, pin3, pin4);
+  Serial.begin(9600);
 }
 
 void loop(){
-
+  Forward
 }
