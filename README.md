@@ -8,7 +8,7 @@
 <br/>
 <br/>
 
-Pour les servo-moteurs, utilisez la *forme* suivante:
+Pour les servo-moteurs, utilisez la *forme* suivante (pour tester):
 ```
 #include <ServoMoteur.h>
 #include <Servo.h>
