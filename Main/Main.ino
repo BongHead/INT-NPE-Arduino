@@ -27,7 +27,7 @@ void loop(){
   if (irrecv.decode(&results)){
     if(results.value == 0XFFFFFFFF)
       results.value = key_value;
-    switch(results_value){
+    switch(results.value){
       case 0xFF18E7:
       moteur.Forward();
       break;
