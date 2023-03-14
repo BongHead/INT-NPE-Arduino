@@ -21,7 +21,6 @@ ServoMoteur::ServoMoteur(
     this->pin2 = pin2;
     this->pin3 = pin3;
     this->pin4 = pin4;
-    init();
 }
 
 void ServoMoteur::init(){
