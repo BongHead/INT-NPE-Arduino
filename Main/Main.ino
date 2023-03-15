@@ -18,7 +18,7 @@ unsigned long key_value = 0;
 
 void setup(){
   Serial.begin(9600);
-  moteur.init(); //Utilisation possible. Essayez sans cette ligne de code pour voir si le constructeur peut setup.
+  moteur.init(); //Connecte chaque attribut pin à son attribut servo respectif. Maintenant obligatoire.
   irrecv.enableIRIn();
   irrecv.blink13(true);
 }
