@@ -79,10 +79,15 @@ void ServoMoteur::Right(){
 }
 //"while" might be implemented in the void loop() instead
 
+/*
+To-do list
 
-//void RotateClockWise
-//void RotateCounterClockWise
-//void DiagonalUpLeft
-//void DiagonalUpRight
-//void DiagonalDownLeft
-//void DiagonalDownRight
+add numerical parameter to functions (to control speed) - Figure out which angle = which speed
+void RotateClockWise
+void RotateCounterClockWise
+void DiagonalUpLeft
+void DiagonalUpRight
+void DiagonalDownLeft
+void DiagonalDownRight
+
+*/
