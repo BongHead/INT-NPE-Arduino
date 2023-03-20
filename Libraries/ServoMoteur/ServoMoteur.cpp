@@ -77,6 +77,13 @@ void ServoMoteur::Right(){
     servo4.write(45);
     //delay(15);
 }
+
+void ServoMoteur::Stop(){
+    servo1.write(0);
+    servo2.write(0);
+    servo3.write(0);
+    servo4.write(0);
+}
 //"while" might be implemented in the void loop() instead
 
 /*

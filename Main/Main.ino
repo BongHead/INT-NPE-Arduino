@@ -12,6 +12,9 @@ int pin4 = 4;
 ServoMoteur moteur(servo1, servo2, servo3, servo4, pin1, pin2, pin3, pin4);
 
 int IRpin = 5;
+bool isHeldDown;
+int currentState;
+int previousNon0Case;
 
 void setup(){
   Serial.begin(9600);
@@ -20,19 +23,34 @@ void setup(){
 }
 
 void loop(){
-    if(IrReceiver.decode()){
-        bool isHeldDown = IrReceiver.decodedIRData.decodedRawData == 0;
-        int currentState = IrReceiver.decodedIRData.decodedRawData;
-        Serial.println(IrReceiver.decodedIRData.decodedRawData);
-        IrReceiver.printIRResultShort(&Serial); // Print complete received data in one line
-        IrReceiver.printIRSendUsage(&Serial);   // Print the statement required to send this data
-        switch(currentState){
-            case 3860463360:
-            moteur.Forward();
-            break;
-            //Et ainsi de suite...
-        }
-        IrReceiver.resume();
-    
+  if(IrReceiver.decode()){
+    Serial.println(IrReceiver.decodedIRData.decodedRawData);
+    IrReceiver.printIRResultShort(&Serial); // Print complete received data in one line
+    IrReceiver.printIRSendUsage(&Serial); // Print the statement required to send this data
+
+    isHeldDown = IrReceiver.decodedIRData.decodedRawData == 0;
+    currentState = IrReceiver.decodedIRData.decodedRawData;
+    /*if(!isHeldDown){
+      previousNon0Case = IrReceiver.decodedIRData.decodedRawData;
+    }*/
+    if(!isHeldDown){
+      previousNon0Case = currentState;
+      switch(currentState){
+        case 3860463360:
+        moteur.Forward();
+        delay(1000);
+        moteur.Stop();
+        break;
+        //Et ainsi de suite...
+      }
+      IrReceiver.resume();
+    }
+    else{ //Held down
+      switch(previousNon0Case){
+        case 3860463360:
+        moteur.Forward();
+        break;
+      }
+    }
   }
 }

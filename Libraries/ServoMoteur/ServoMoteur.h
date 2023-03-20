@@ -22,5 +22,6 @@ class ServoMoteur{
         void Backward();
         void Left();
         void Right();
+        void Stop();
 };
 #endif
