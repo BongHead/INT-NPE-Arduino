@@ -26,12 +26,12 @@ void loop(){
         Serial.println(IrReceiver.decodedIRData.decodedRawData);
         IrReceiver.printIRResultShort(&Serial); // Print complete received data in one line
         IrReceiver.printIRSendUsage(&Serial);   // Print the statement required to send this data
-        switch(currentState{
+        switch(currentState){
             case 3860463360:
             moteur.Forward();
             break;
             //Et ainsi de suite...
-        })
+        }
         IrReceiver.resume();
     
   }
