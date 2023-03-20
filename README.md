@@ -24,29 +24,28 @@ int pin4 = 4;
 ServoMoteur moteur(servo1, servo2, servo3, servo4, pin1, pin2, pin3, pin4);
 
 int IRpin = 5;
-IRrecv irrecv(IRpin);
-decode_results results;
-unsigned long key_value = 0;
 
 void setup(){
   Serial.begin(9600);
   moteur.init(); //Connecte chaque attribut pin à son attribut servo respectif. Maintenant obligatoire.
-  irrecv.enableIRIn();
-  irrecv.blink13(true);
+  IrReceiver.begin(IRpin, ENABLE_LED_FEEDBACK);
 }
 
 void loop(){
-  if (irrecv.decode(&results)){
-    if(results.value == 0XFFFFFFFF)
-      results.value = key_value;
-    switch(results_value){
-      case 0xFF18E7:
-      moteur.Forward();
-      break;
-      //Et ainsi de suite...
-    }
-    key_value = results.value;
-    irrecv.resume();
+    if(IrReceiver.decode()){
+        bool isHeldDown = IrReceiver.decodedIRData.decodedRawData == 0;
+        int currentState = IrReceiver.decodedIRData.decodedRawData;
+        Serial.println(IrReceiver.decodedIRData.decodedRawData);
+        IrReceiver.printIRResultShort(&Serial); // Print complete received data in one line
+        IrReceiver.printIRSendUsage(&Serial);   // Print the statement required to send this data
+        switch(currentState){
+            case 3860463360:
+            moteur.Forward();
+            break;
+            //Et ainsi de suite...
+        }
+        IrReceiver.resume();
+    
   }
 }
 ```
