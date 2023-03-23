@@ -40,8 +40,6 @@ void ServoMoteur::init(){
     (looking from top)
 */
 
-
-//>90 -> rotates backward (apparently)
 void ServoMoteur::Forward(){
     //Rotate all 4 wheels forward *while* IR remote -> up arrow
     servo1.write(180);

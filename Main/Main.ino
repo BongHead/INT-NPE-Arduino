@@ -1,56 +1,84 @@
+#include <IRremote.h>
 #include <ServoMoteur.h>
 #include <Servo.h>
-#include <IRremote.h>
+
 Servo servo1;
 Servo servo2;
 Servo servo3;
 Servo servo4;
-int pin1 = 1;
-int pin2 = 2;
-int pin3 = 3;
-int pin4 = 4;
+const int pin1 = 1;
+const int pin2 = 2;
+const int pin3 = 3;
+const int pin4 = 4;
 ServoMoteur moteur(servo1, servo2, servo3, servo4, pin1, pin2, pin3, pin4);
 
-int IRpin = 5;
+const int recvPin = 5;
+IRrecv irrecv(recvPin);
+decode_results results;
+
 bool isHeldDown;
-int currentState;
-int previousNon0Case;
+unsigned long previousState;
 
 void setup(){
-  Serial.begin(9600);
-  moteur.init(); //Connecte chaque attribut pin à son attribut servo respectif. Maintenant obligatoire.
-  IrReceiver.begin(IRpin, ENABLE_LED_FEEDBACK);
+Serial.begin(9600);
+irrecv.enableIRIn();
+irrecv.blink13(true);
+moteur.init();
 }
 
 void loop(){
-  if(IrReceiver.decode()){
-    Serial.println(IrReceiver.decodedIRData.decodedRawData);
-    IrReceiver.printIRResultShort(&Serial); // Print complete received data in one line
-    IrReceiver.printIRSendUsage(&Serial); // Print the statement required to send this data
-
-    isHeldDown = IrReceiver.decodedIRData.decodedRawData == 0;
-    currentState = IrReceiver.decodedIRData.decodedRawData;
-    /*if(!isHeldDown){
-      previousNon0Case = IrReceiver.decodedIRData.decodedRawData;
-    }*/
-    if(!isHeldDown){
-      previousNon0Case = currentState;
-      switch(currentState){
-        case 3860463360:
+  if(irrecv.decode(&results)){
+    isHeldDown = results.value == 4294967295;
+    Serial.println(results.value);
+    if(!isHeldDown){//is not held down
+      previousState = results.value;
+      switch(results.value){
+        case 16718055:
         moteur.Forward();
-        delay(1000);
+        delay(500);
         moteur.Stop();
         break;
-        //Et ainsi de suite...
-      }
-      IrReceiver.resume();
-    }
-    else{ //Held down
-      switch(previousNon0Case){
-        case 3860463360:
-        moteur.Forward();
+        case 16730805:
+        moteur.Backward();
+        delay(500);
+        moteur.Stop();
+        break;
+        case 16716015:
+        moteur.Left();
+        delay(500);
+        moteur.Stop();
+        break;
+        case 16734885:
+        moteur.Right();
+        delay(500);
+        moteur.Stop();
+        break;
+        case 16726215:
+        moteur.Stop();
         break;
       }
     }
+    else{
+      switch(previousState){//is held down
+        case 16718055:
+        moteur.Forward();
+        break;
+        case 16730805:
+        moteur.Backward();
+        break;
+        case 16716015:
+        moteur.Left();
+        break;
+        case 16734885:
+        moteur.Right();
+        break;
+        case 16726215:
+        moteur.Stop();
+        break;
+      }
+    }
+  
+    irrecv.resume();
   }
+  //moteur.Forward();
 }
