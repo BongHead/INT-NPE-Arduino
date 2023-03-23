@@ -44,45 +44,45 @@ void ServoMoteur::init(){
 //>90 -> rotates backward (apparently)
 void ServoMoteur::Forward(){
     //Rotate all 4 wheels forward *while* IR remote -> up arrow
-    servo1.write(45);
-    servo2.write(45);
-    servo3.write(45);
-    servo4.write(45);
+    servo1.write(180);
+    servo2.write(0);
+    servo3.write(180);
+    servo4.write(0);
     //delay(15); //allow the servo some time to spin
 }
 
 void ServoMoteur::Backward(){
     //Rotate all 4 wheels backward *while* IR remote -> down arrow
-    servo1.write(135);
-    servo2.write(135);
-    servo3.write(135);
-    servo4.write(135);
+    servo1.write(0);
+    servo2.write(180);
+    servo3.write(0);
+    servo4.write(180);
     //delay(15);
 }
 
 void ServoMoteur::Left(){
     //Rotate 1 and 4 backward, 2 and 3 forward *while* IR remote -> left arrow
-    servo1.write(135);
-    servo2.write(45);
-    servo3.write(45);
-    servo4.write(135);
+    servo1.write(0);
+    servo2.write(0);
+    servo3.write(180);
+    servo4.write(180);
     //delay(15);
 }
 
 void ServoMoteur::Right(){
     //Rotate 1 and 4 forward, 2 and 3 forward *while* IR remote -> right arrow
-    servo1.write(45);
-    servo2.write(135);
-    servo3.write(135);
-    servo4.write(45);
+    servo1.write(180);
+    servo2.write(180);
+    servo3.write(0);
+    servo4.write(0);
     //delay(15);
 }
 
 void ServoMoteur::Stop(){
-    servo1.write(0);
-    servo2.write(0);
-    servo3.write(0);
-    servo4.write(0);
+    servo1.write(90);
+    servo2.write(90);
+    servo3.write(90);
+    servo4.write(90);
 }
 //"while" might be implemented in the void loop() instead
 
