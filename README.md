@@ -8,7 +8,16 @@
 <br/>
 <br/>
 
+Dépendences:
+```
+Servo.h             v1.1.8
+ServoMoteur.h       Latest
+IRremote.h          v0.11
+```
+
+<br/>
 Pour les servo-moteurs, utilisez la *forme* suivante:
+
 ```
 #include <ServoMoteur.h>
 #include <Servo.h>
