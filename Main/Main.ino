@@ -1,28 +1,84 @@
-#include <Servo.h>
 #include <IRremote.h>
-#include <HC-SR04.h>
+#include <ServoMoteur.h>
+#include <Servo.h>
 
+Servo servo1;
+Servo servo2;
+Servo servo3;
+Servo servo4;
+const int pin1 = 1;
+const int pin2 = 2;
+const int pin3 = 3;
+const int pin4 = 4;
+ServoMoteur moteur(servo1, servo2, servo3, servo4, pin1, pin2, pin3, pin4);
 
-//Changez les noms au besoin:
-int pin1 = 1;
-int pin2 = 2;
-int pin3 = 3;
-int pin4 = 4;
-int pin5 = 5;
-int pin6 = 6;
-int pin7 = 7;
-int pin8 = 8;
-int pin9 = 9;
-int pin10 = 10;
-int pin11 = 11;
-int pin12 = 12;
-int pin14 = 13;
+const int recvPin = 5;
+IRrecv irrecv(recvPin);
+decode_results results;
+
+bool isHeldDown;
+unsigned long previousState;
 
 void setup(){
-    
-    Serial.begin(9600);
+Serial.begin(9600);
+irrecv.enableIRIn();
+irrecv.blink13(true);
+moteur.init();
 }
 
 void loop(){
-
+  if(irrecv.decode(&results)){
+    isHeldDown = results.value == 4294967295;
+    Serial.println(results.value);
+    if(!isHeldDown){//is not held down
+      previousState = results.value;
+      switch(results.value){
+        case 16718055:
+        moteur.Forward();
+        delay(500);
+        moteur.Stop();
+        break;
+        case 16730805:
+        moteur.Backward();
+        delay(500);
+        moteur.Stop();
+        break;
+        case 16716015:
+        moteur.Left();
+        delay(500);
+        moteur.Stop();
+        break;
+        case 16734885:
+        moteur.Right();
+        delay(500);
+        moteur.Stop();
+        break;
+        case 16726215:
+        moteur.Stop();
+        break;
+      }
+    }
+    else{
+      switch(previousState){//is held down
+        case 16718055:
+        moteur.Forward();
+        break;
+        case 16730805:
+        moteur.Backward();
+        break;
+        case 16716015:
+        moteur.Left();
+        break;
+        case 16734885:
+        moteur.Right();
+        break;
+        case 16726215:
+        moteur.Stop();
+        break;
+      }
+    }
+  
+    irrecv.resume();
+  }
+  //moteur.Forward();
 }

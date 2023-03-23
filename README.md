@@ -8,6 +8,8 @@
 <br/>
 <br/>
 
+
+Pour les servo-moteurs, utilisez la *forme* suivante:
 Dépendences:
 ```
 Servo.h             v1.1.8
