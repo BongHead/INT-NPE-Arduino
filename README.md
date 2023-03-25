@@ -9,7 +9,6 @@
 <br/>
 
 
-Pour les servo-moteurs, utilisez la *forme* suivante:
 Dépendences:
 ```
 Servo.h             v1.1.8
@@ -21,23 +20,6 @@ IRremote.h          v0.11
 Pour les servo-moteurs, utilisez la *forme* suivante:
 
 ```
-#include <ServoMoteur.h>
-#include <Servo.h>
-#include <IRremote.h>
-Servo servo1;
-Servo servo2;
-Servo servo3;
-Servo servo4;
-int pin1 = 1;
-int pin2 = 2;
-int pin3 = 3;
-int pin4 = 4;
-ServoMoteur moteur(servo1, servo2, servo3, servo4, pin1, pin2, pin3, pin4);
-
-int IRpin = 5;
-IRrecv irrecv(IRpin);
-decode_results results;
-unsigned long key_value = 0;
 
 void setup(){
   Serial.begin(9600);
@@ -49,14 +31,12 @@ void setup(){
 void loop(){
   if (irrecv.decode(&results)){
     if(results.value == 0XFFFFFFFF)
-      results.value = key_value;
     switch(results_value){
       case 0xFF18E7:
       moteur.Forward();
       break;
       //Et ainsi de suite...
     }
-    key_value = results.value;
     irrecv.resume();
   }
 }
@@ -110,23 +90,14 @@ dans le folder désiré.
 
 [Servo-moteur](https://docs.arduino.cc/learn/electronics/servo-motors)
 
-[IRremote](https://github.com/Arduino-IRremote/Arduino-IRremote)
+[IRremote](https://www.circuitbasics.com/arduino-ir-remote-receiver-tutorial/)
 
 
 <br/>
 <br/>
 
 ### **Prenez note de ces choses suivantes lors du codage:**
-Il est fortement suggéré de mettre un delay entre chaque signal électrique différent:
-```
-void loop(){
-  ToggleLight();
-  delay(10); //Donner du temps pour éviter d'avoir 2 (ou plus) signals en même temps qui peuvent bugger le truc.
-  RotateEngine(25);
-  delay(10);
-  ToggleLight();
-}
-```
+
 <br/>
 Je vais probablement faire des libraries pour rendre plus facile le codage. Il suffit de mettre `#include <my_library>` au début du fichier.
 
