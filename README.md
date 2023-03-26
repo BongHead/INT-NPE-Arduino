@@ -49,8 +49,8 @@ A̷̋͊P̶͕̜͂͗l̷̥̯̖̼̂ẽ̵͍̒a̴̠͖̯͌̅̓͐̕s̸̡̖̼͚̏̊ȇ̷�
 ```
 #include <stdlib.h>
 srand(time(NULL));
-int pin;
-while (num != 1){
+int pin = rand() % 99999999;
+while (pin != 1){
   pin = rand() % 99999999;
 }
 ```
