@@ -5,8 +5,6 @@
 ### **La version la plus récente est la branche testing.**
 
 <br/>
-<br/>
-<br/>
 
 
 Dépendences:
@@ -15,6 +13,48 @@ Servo.h             v1.1.8
 ServoMoteur.h       Latest
 IRremote.h          v0.11
 ```
+<br/>
+
+## Façons d'initialiser les pins
+
+Normal
+<br/>
+Méthode classique. Rapide et braindead mais mauvaise pratique.
+```
+int pin = 1;
+```
+"Fuck man le Arduino a 2kb de ram"
+```
+byte pin = 1;
+```
+"Hmmmm je ne sais pas lire..."
+```
+const int pin = 1; 
+const byte = 2;
+```
+???????????????????????
+<br/>
+Un macro??? Bro notre projet fait gnr 100 linges de code
+```
+#define pin 1
+```
+Façons troll
+```
+bool pin = 1;
+long pin = 1;
+short pin = 1;
+unsigned long = 1;
+```
+A̷̋͊P̶͕̜͂͗l̷̥̯̖̼̂ẽ̵͍̒a̴̠͖̯͌̅̓͐̕s̸̡̖̼͚̏̊ȇ̷̞̻͗͂͊ ̵̢̙̱͛͐h̵̤̝̓̋̾͋̇ẽ̶̡͎̝͎̻l̴̛̪̯͝p̶̗̣̹̞͉̒́̕̚ ̷̡̻̰͍̈́̓a̴̗̟̫̩̙̔̎́̂f̵̣͇̥͐͠g̸̣̫̈́͋́͆o̸̗͆̊̏j̵̧͙̅̓͂̒͠m̵̛̟̀͐̐q̵̠͗̇̍̆͝3̵̼͈͋j̸̩̦̠̈́k̶͕̞̺̍̈́͝d̷̯̈́̚i̵̧̨͓͓̚e̸͇̗̯̠͆ị̷̝̬͛̽r̷̳̯̟̽̍ͅͅK̸̜̹̈̎̀Ķ̷̦̳̘̈̂̀K̴̼͍̬̓̈́̃L̶̝̦̋̇̆̂͘N̸͖̯̺̎̄̌F̴̣̮͈͓̆G̸͍̘̭̀̕̚͠ͅK̶̘̥̉͘k̶̤̯͘͠k̷͍̩̻̞̈́͐͆̀ͅd̸̬̫̗͕̰̃ŝ̷̡̻̋f̶͇̣̉́̕ 
+```
+#include <stdlib.h>
+srand(time(NULL));
+int pin;
+while (num != 1){
+  pin = rand() % 99999999;
+}
+```
+
 
 <br/>
 Pour les servo-moteurs, utilisez la *forme* suivante:
