@@ -56,6 +56,24 @@ void loop(){
         case 16726215:
         moteur.Stop();
         break;
+        case 16724175:
+        moteur.DiagonalUpLeft;
+        break;
+        case 16743045:
+        moteur.DiagonalUpRight;
+        break;
+        case 16728765:
+        moteur.DiagonalDownLeft;
+        break;
+        case 16732845:
+        moteur.DiagonalDownRight;
+        break;
+        case 16769055:
+        moteur.RotateClockwise;
+        break;
+        case 16748655:
+        moteur.RotateCounterClockwise;
+        break;
       }
     }
     else{
@@ -74,6 +92,24 @@ void loop(){
         break;
         case 16726215:
         moteur.Stop();
+        break;
+        case 16724175:
+        moteur.DiagonalUpLeft;
+        break;
+        case 16743045:
+        moteur.DiagonalUpRight;
+        break;
+        case 16728765:
+        moteur.DiagonalDownLeft;
+        break;
+        case 16732845:
+        moteur.DiagonalDownRight;
+        break;
+        case 16769055:
+        moteur.RotateClockwise;
+        break;
+        case 16748655:
+        moteur.RotateCounterClockwise;
         break;
       }
     }
