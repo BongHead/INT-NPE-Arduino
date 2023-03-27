@@ -23,5 +23,11 @@ class ServoMoteur{
         void Left();
         void Right();
         void Stop();
+        void RotateClockwise();
+        void RotateCounterClockwise();
+        void DiagonalUpLeft();
+        void DiagonalUpRight();
+        void DiagonalDownLeft();
+        void DiagonalDownRight();
 };
 #endif

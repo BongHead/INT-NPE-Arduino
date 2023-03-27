@@ -82,6 +82,48 @@ void ServoMoteur::Stop(){
     servo3.write(90);
     servo4.write(90);
 }
+
+void ServoMoteur::RotateClockwise(){
+    servo1.write(180);
+    servo2.write(180);
+    servo3.write(180);
+    servo4.write(180);
+}
+
+void ServoMoteur::RotateCounterClockwise(){
+    servo1.write(0);
+    servo2.write(0);
+    servo3.write(0);
+    servo4.write(0);
+}
+
+void ServoMoteur::DiagonalUpRight(){
+    servo1.write(180);
+    servo2.write(90);
+    servo3.write(90);
+    servo4.write(0);
+}
+
+void ServoMoteur::DiagonalDownLeft(){
+    servo1.write(0);
+    servo2.write(90);
+    servo3.write(90);
+    servo4.write(180);
+}
+
+void ServoMoteur::DiagonalUpLeft(){
+    servo1.write(90);
+    servo2.write(0);
+    servo3.write(180);
+    servo4.write(90);
+}
+
+void ServoMoteur::RotateCounterClockwise(){
+    servo1.write(90);
+    servo2.write(180);
+    servo3.write(0);
+    servo4.write(90);
+}
 //"while" might be implemented in the void loop() instead
 
 /*
