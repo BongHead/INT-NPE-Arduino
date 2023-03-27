@@ -38,41 +38,63 @@ void loop(){
         delay(500);
         moteur.Stop();
         break;
+
         case 16730805:
         moteur.Backward();
         delay(500);
         moteur.Stop();
         break;
+
         case 16716015:
         moteur.Left();
         delay(500);
         moteur.Stop();
         break;
+
         case 16734885:
         moteur.Right();
         delay(500);
         moteur.Stop();
         break;
+
         case 16726215:
         moteur.Stop();
         break;
+
         case 16724175:
-        moteur.DiagonalUpLeft;
+        moteur.DiagonalUpLeft();
+        delay(500);
+        moteur.Stop();
         break;
+
         case 16743045:
-        moteur.DiagonalUpRight;
+        moteur.DiagonalUpRight();
+        delay(500);
+        moteur.Stop();
         break;
+
         case 16728765:
-        moteur.DiagonalDownLeft;
+        moteur.DiagonalDownLeft();
+        delay(500);
+        moteur.Stop();
         break;
+
         case 16732845:
-        moteur.DiagonalDownRight;
+        moteur.DiagonalDownRight();
+        delay(500);
+        moteur.Stop();
         break;
+
         case 16769055:
-        moteur.RotateClockwise;
+        moteur.RotateClockwise();
+        delay(500);
+        moteur.Stop();
         break;
+
         case 16748655:
-        moteur.RotateCounterClockwise;
+        moteur.RotateCounterClockwise();
+        delay(500);
+        moteur.Stop();
         break;
       }
     }
@@ -81,40 +103,49 @@ void loop(){
         case 16718055:
         moteur.Forward();
         break;
+
         case 16730805:
         moteur.Backward();
         break;
+
         case 16716015:
         moteur.Left();
         break;
+
         case 16734885:
         moteur.Right();
         break;
+
         case 16726215:
         moteur.Stop();
         break;
+
         case 16724175:
-        moteur.DiagonalUpLeft;
+        moteur.DiagonalUpLeft();
         break;
+
         case 16743045:
-        moteur.DiagonalUpRight;
+        moteur.DiagonalUpRight();
         break;
+
         case 16728765:
-        moteur.DiagonalDownLeft;
+        moteur.DiagonalDownLeft();
         break;
+
         case 16732845:
-        moteur.DiagonalDownRight;
+        moteur.DiagonalDownRight();
         break;
+
         case 16769055:
-        moteur.RotateClockwise;
+        moteur.RotateClockwise();
         break;
+
         case 16748655:
-        moteur.RotateCounterClockwise;
+        moteur.RotateCounterClockwise();
         break;
       }
     }
   
     irrecv.resume();
   }
-  //moteur.Forward();
 }

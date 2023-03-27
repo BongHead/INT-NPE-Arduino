@@ -68,7 +68,7 @@ void ServoMoteur::Left(){
 }
 
 void ServoMoteur::Right(){
-    //Rotate 1 and 4 forward, 2 and 3 forward *while* IR remote -> right arrow
+    //Rotate 1 and 4 forward, 2 and 3 backward *while* IR remote -> right arrow
     servo1.write(180);
     servo2.write(180);
     servo3.write(0);
@@ -77,6 +77,7 @@ void ServoMoteur::Right(){
 }
 
 void ServoMoteur::Stop(){
+    //All stop
     servo1.write(90);
     servo2.write(90);
     servo3.write(90);
@@ -84,6 +85,7 @@ void ServoMoteur::Stop(){
 }
 
 void ServoMoteur::RotateClockwise(){
+    //Rotate 1 and 3 forward, 2 and 4 backward
     servo1.write(180);
     servo2.write(180);
     servo3.write(180);
@@ -91,6 +93,7 @@ void ServoMoteur::RotateClockwise(){
 }
 
 void ServoMoteur::RotateCounterClockwise(){
+    //Rotate 1 and 3 backward, 2 and 4 forward
     servo1.write(0);
     servo2.write(0);
     servo3.write(0);
@@ -98,6 +101,7 @@ void ServoMoteur::RotateCounterClockwise(){
 }
 
 void ServoMoteur::DiagonalUpRight(){
+    //Stop 2 and 3, 1 and 4 forward
     servo1.write(180);
     servo2.write(90);
     servo3.write(90);
@@ -105,6 +109,7 @@ void ServoMoteur::DiagonalUpRight(){
 }
 
 void ServoMoteur::DiagonalDownLeft(){
+    //Stop 2 and 3, 1 and 4 backward
     servo1.write(0);
     servo2.write(90);
     servo3.write(90);
@@ -112,6 +117,7 @@ void ServoMoteur::DiagonalDownLeft(){
 }
 
 void ServoMoteur::DiagonalUpLeft(){
+    //Stop 1 and 4, 2 and 3 forward
     servo1.write(90);
     servo2.write(0);
     servo3.write(180);
@@ -119,12 +125,12 @@ void ServoMoteur::DiagonalUpLeft(){
 }
 
 void ServoMoteur::RotateCounterClockwise(){
+    //Stop 1 and 4, 2 and 3 backward
     servo1.write(90);
     servo2.write(180);
     servo3.write(0);
     servo4.write(90);
 }
-//"while" might be implemented in the void loop() instead
 
 /*
 To-do list
