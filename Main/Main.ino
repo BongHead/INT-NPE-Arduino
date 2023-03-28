@@ -26,14 +26,33 @@ SR04 ultrason = SR04(pinEcho, pinTrig);
 long distance;
 int speed = 0;
 
+const byte pinRes = A0;
+const byte pinLight1 = 9;
+const byte pinLight2 = 10;
+int value;
+
 void setup(){
 Serial.begin(9600);
 irrecv.enableIRIn();
 irrecv.blink13(true);
 moteur.init();
+pinMode(pinLight1, OUTPUT);
+pinMode(pinLight2, OUTPUT);
+pinMode(pinRes, INPUT);
 }
 
 void loop(){
+  value = analogRead(pinRes); //Untested values
+  if(value > 25){
+    digitalWrite(pinLight1, LOW);
+    digitalWrite(pinLight2, LOW);
+  }
+  else{
+    digitalWrite(pinLight1, HIGH);
+    digitalWrite(pinLight2, HIGH);
+  }
+
+
   distance = ultrason.Distance(); //in cm
   if(distance < 4)
     speed = -45;

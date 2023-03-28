@@ -135,12 +135,6 @@ void ServoMoteur::DiagonalDownRight(int speed){
 /*
 To-do list
 
-add numerical parameter to functions (to control speed) - Figure out which angle = which speed
-void RotateClockWise
-void RotateCounterClockWise
-void DiagonalUpLeft
-void DiagonalUpRight
-void DiagonalDownLeft
-void DiagonalDownRight
+Add Light controls to remote
 
 */
