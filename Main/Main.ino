@@ -1,23 +1,30 @@
 #include <IRremote.h>
 #include <ServoMoteur.h>
 #include <Servo.h>
+#include <SR04.h>
 
 Servo servo1;
 Servo servo2;
 Servo servo3;
 Servo servo4;
-const int pin1 = 1;
-const int pin2 = 2;
-const int pin3 = 3;
-const int pin4 = 4;
+const byte pin1 = 1;
+const byte pin2 = 2;
+const byte pin3 = 3;
+const byte pin4 = 4;
 ServoMoteur moteur(servo1, servo2, servo3, servo4, pin1, pin2, pin3, pin4);
 
-const int recvPin = 5;
+const byte recvPin = 5;
 IRrecv irrecv(recvPin);
 decode_results results;
 
 bool isHeldDown;
 unsigned long previousState;
+
+const byte pinEcho = 6;
+const byte pinTrig = 7;
+SR04 ultrason = SR04(pinEcho, pinTrig);
+long distance;
+int speed = 0;
 
 void setup(){
 Serial.begin(9600);
@@ -27,32 +34,39 @@ moteur.init();
 }
 
 void loop(){
+  distance = ultrason.Distance(); //in cm
+  if(distance < 4)
+    speed = -45;
+  else
+    speed = 0;
+
   if(irrecv.decode(&results)){
     isHeldDown = results.value == 4294967295;
     Serial.println(results.value);
+
     if(!isHeldDown){//is not held down
       previousState = results.value;
       switch(results.value){
         case 16718055:
-        moteur.Forward();
+        moteur.Forward(speed);
         delay(500);
         moteur.Stop();
         break;
 
         case 16730805:
-        moteur.Backward();
+        moteur.Backward(speed);
         delay(500);
         moteur.Stop();
         break;
 
         case 16716015:
-        moteur.Left();
+        moteur.Left(speed);
         delay(500);
         moteur.Stop();
         break;
 
         case 16734885:
-        moteur.Right();
+        moteur.Right(speed);
         delay(500);
         moteur.Stop();
         break;
@@ -62,37 +76,37 @@ void loop(){
         break;
 
         case 16724175:
-        moteur.DiagonalUpLeft();
+        moteur.DiagonalUpLeft(speed);
         delay(500);
         moteur.Stop();
         break;
 
         case 16743045:
-        moteur.DiagonalUpRight();
+        moteur.DiagonalUpRight(speed);
         delay(500);
         moteur.Stop();
         break;
 
         case 16728765:
-        moteur.DiagonalDownLeft();
+        moteur.DiagonalDownLeft(speed);
         delay(500);
         moteur.Stop();
         break;
 
         case 16732845:
-        moteur.DiagonalDownRight();
+        moteur.DiagonalDownRight(speed);
         delay(500);
         moteur.Stop();
         break;
 
         case 16769055:
-        moteur.RotateClockwise();
+        moteur.RotateClockwise(speed);
         delay(500);
         moteur.Stop();
         break;
 
         case 16748655:
-        moteur.RotateCounterClockwise();
+        moteur.RotateCounterClockwise(speed);
         delay(500);
         moteur.Stop();
         break;
@@ -101,19 +115,19 @@ void loop(){
     else{
       switch(previousState){//is held down
         case 16718055:
-        moteur.Forward();
+        moteur.Forward(speed);
         break;
 
         case 16730805:
-        moteur.Backward();
+        moteur.Backward(speed);
         break;
 
         case 16716015:
-        moteur.Left();
+        moteur.Left(speed);
         break;
 
         case 16734885:
-        moteur.Right();
+        moteur.Right(speed);
         break;
 
         case 16726215:
@@ -121,27 +135,27 @@ void loop(){
         break;
 
         case 16724175:
-        moteur.DiagonalUpLeft();
+        moteur.DiagonalUpLeft(speed);
         break;
 
         case 16743045:
-        moteur.DiagonalUpRight();
+        moteur.DiagonalUpRight(speed);
         break;
 
         case 16728765:
-        moteur.DiagonalDownLeft();
+        moteur.DiagonalDownLeft(speed);
         break;
 
         case 16732845:
-        moteur.DiagonalDownRight();
+        moteur.DiagonalDownRight(speed);
         break;
 
         case 16769055:
-        moteur.RotateClockwise();
+        moteur.RotateClockwise(speed);
         break;
 
         case 16748655:
-        moteur.RotateCounterClockwise();
+        moteur.RotateCounterClockwise(speed);
         break;
       }
     }

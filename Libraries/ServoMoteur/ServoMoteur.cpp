@@ -40,39 +40,39 @@ void ServoMoteur::init(){
     (looking from top)
 */
 
-void ServoMoteur::Forward(){
+void ServoMoteur::Forward(int speed){
     //Rotate all 4 wheels forward *while* IR remote -> up arrow
-    servo1.write(180);
-    servo2.write(0);
-    servo3.write(180);
-    servo4.write(0);
+    servo1.write(abs(speed + 180));
+    servo2.write(abs(speed));
+    servo3.write(abs(speed + 180));
+    servo4.write(abs(speed));
     //delay(15); //allow the servo some time to spin
 }
 
-void ServoMoteur::Backward(){
+void ServoMoteur::Backward(int speed){
     //Rotate all 4 wheels backward *while* IR remote -> down arrow
-    servo1.write(0);
-    servo2.write(180);
-    servo3.write(0);
-    servo4.write(180);
+    servo1.write(abs(speed));
+    servo2.write(abs(speed + 180));
+    servo3.write(abs(speed));
+    servo4.write(abs(speed + 180));
     //delay(15);
 }
 
-void ServoMoteur::Left(){
+void ServoMoteur::Left(int speed){
     //Rotate 1 and 4 backward, 2 and 3 forward *while* IR remote -> left arrow
-    servo1.write(0);
-    servo2.write(0);
-    servo3.write(180);
-    servo4.write(180);
+    servo1.write(abs(speed));
+    servo2.write(abs(speed));
+    servo3.write(abs(speed + 180));
+    servo4.write(abs(speed + 180));
     //delay(15);
 }
 
-void ServoMoteur::Right(){
+void ServoMoteur::Right(int speed){
     //Rotate 1 and 4 forward, 2 and 3 backward *while* IR remote -> right arrow
-    servo1.write(180);
-    servo2.write(180);
-    servo3.write(0);
-    servo4.write(0);
+    servo1.write(abs(speed + 180));
+    servo2.write(abs(speed + 180));
+    servo3.write(abs(speed));
+    servo4.write(abs(speed));
     //delay(15);
 }
 
@@ -84,51 +84,51 @@ void ServoMoteur::Stop(){
     servo4.write(90);
 }
 
-void ServoMoteur::RotateClockwise(){
+void ServoMoteur::RotateClockwise(int speed){
     //Rotate 1 and 3 forward, 2 and 4 backward
-    servo1.write(180);
-    servo2.write(180);
-    servo3.write(180);
-    servo4.write(180);
+    servo1.write(abs(speed + 180));
+    servo2.write(abs(speed + 180));
+    servo3.write(abs(speed + 180));
+    servo4.write(abs(speed + 180));
 }
 
-void ServoMoteur::RotateCounterClockwise(){
+void ServoMoteur::RotateCounterClockwise(int speed){
     //Rotate 1 and 3 backward, 2 and 4 forward
-    servo1.write(0);
-    servo2.write(0);
-    servo3.write(0);
-    servo4.write(0);
+    servo1.write(abs(speed));
+    servo2.write(abs(speed));
+    servo3.write(abs(speed));
+    servo4.write(abs(speed));
 }
 
-void ServoMoteur::DiagonalUpRight(){
+void ServoMoteur::DiagonalUpRight(int speed){
     //Stop 2 and 3, 1 and 4 forward
-    servo1.write(180);
+    servo1.write(abs(speed + 180));
     servo2.write(90);
     servo3.write(90);
-    servo4.write(0);
+    servo4.write(abs(speed));
 }
 
-void ServoMoteur::DiagonalDownLeft(){
+void ServoMoteur::DiagonalDownLeft(int speed){
     //Stop 2 and 3, 1 and 4 backward
-    servo1.write(0);
+    servo1.write(abs(speed));
     servo2.write(90);
     servo3.write(90);
-    servo4.write(180);
+    servo4.write(abs(speed + 180));
 }
 
-void ServoMoteur::DiagonalUpLeft(){
+void ServoMoteur::DiagonalUpLeft(int speed){
     //Stop 1 and 4, 2 and 3 forward
     servo1.write(90);
-    servo2.write(0);
-    servo3.write(180);
+    servo2.write(abs(speed));
+    servo3.write(abs(speed + 180));
     servo4.write(90);
 }
 
-void ServoMoteur::RotateCounterClockwise(){
+void ServoMoteur::DiagonalDownRight(int speed){
     //Stop 1 and 4, 2 and 3 backward
     servo1.write(90);
-    servo2.write(180);
-    servo3.write(0);
+    servo2.write(abs(speed + 180));
+    servo3.write(abs(speed));
     servo4.write(90);
 }
 
