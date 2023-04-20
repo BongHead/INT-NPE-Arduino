@@ -25,6 +25,9 @@ const byte pinTrig = 7;
 SR04 ultrason = SR04(pinEcho, pinTrig);
 long distance;
 int speed = 0;
+const byte pinGreen = 11;
+const byte pinYellow = 12;
+const byte pinRed = 13;
 
 const byte pinRes = A0;
 const byte pinLight1 = 9;
@@ -43,7 +46,7 @@ pinMode(pinRes, INPUT);
 
 void loop(){
   value = analogRead(pinRes); //Untested values
-  if(value > 25){
+  if(value > 300){
     digitalWrite(pinLight1, LOW);
     digitalWrite(pinLight2, LOW);
   }
@@ -54,11 +57,26 @@ void loop(){
 
 
   distance = ultrason.Distance(); //in cm
-  if(distance < 4)
+  if(distance < 20){
     speed = -45;
-  else
+    digitalWrite(13, HIGH);
+    digitalWrite(11, LOW);
+    digitalWrite(12, LOW);
+  }
+  else if(distance < 35){
     speed = 0;
+    digitalWrite(13, LOW);
+    digitalWrite(11, LOW);
+    digitalWrite(12, HIGH);
+  }
+  else{
+    speed = 0;
+    digitalWrite(13, LOW);
+    digitalWrite(11, HIGH);
+    digitalWrite(12, LOW);
+  }
 
+  
   if(irrecv.decode(&results)){
     isHeldDown = results.value == 4294967295;
     Serial.println(results.value);
