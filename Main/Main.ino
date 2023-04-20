@@ -31,7 +31,6 @@ const byte pinRed = 13;
 
 const byte pinRes = A0;
 const byte pinLight1 = 9;
-const byte pinLight2 = 10;
 int value;
 
 void setup(){
@@ -40,7 +39,6 @@ void setup(){
   irrecv.blink13(true);
   moteur.init();
   pinMode(pinLight1, OUTPUT);
-  pinMode(pinLight2, OUTPUT);
   pinMode(pinRes, INPUT);
   pinMode(pinGreen, OUTPUT);
   pinMode(pinYellow, OUTPUT);
@@ -49,14 +47,10 @@ void setup(){
 
 void loop(){
   value = analogRead(pinRes); //Untested values
-  if(value > 300){
+  if(value > 300)
     digitalWrite(pinLight1, LOW);
-    digitalWrite(pinLight2, LOW);
-  }
-  else{
+  else
     digitalWrite(pinLight1, HIGH);
-    digitalWrite(pinLight2, HIGH);
-  }
 
 
   distance = ultrason.Distance(); //in cm
