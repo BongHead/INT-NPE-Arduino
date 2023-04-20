@@ -35,13 +35,16 @@ const byte pinLight2 = 10;
 int value;
 
 void setup(){
-Serial.begin(9600);
-irrecv.enableIRIn();
-irrecv.blink13(true);
-moteur.init();
-pinMode(pinLight1, OUTPUT);
-pinMode(pinLight2, OUTPUT);
-pinMode(pinRes, INPUT);
+  Serial.begin(9600);
+  irrecv.enableIRIn();
+  irrecv.blink13(true);
+  moteur.init();
+  pinMode(pinLight1, OUTPUT);
+  pinMode(pinLight2, OUTPUT);
+  pinMode(pinRes, INPUT);
+  pinMode(pinGreen, OUTPUT);
+  pinMode(pinYellow, OUTPUT);
+  pinMode(pinRed, OUTPUT);
 }
 
 void loop(){
